@@ -1,0 +1,74 @@
+/*================================================================================
+
+================================================================================
+
+NOTE:
+------
+PLACE HERE YOUR OWN SCSS CODES AND IF NEEDED, OVERRIDE THE STYLES FROM THE OTHER STYLESHEETS.
+WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BETTER LIKE THIS.  */
+.breadcrumb-wrapper
+{
+font-family: IRANSans, sans-serif !important;
+}
+
+.breadcrumbs-top .breadcrumb {
+font-family: IRANSans, sans-serif !important;
+}
+.presentColor{
+    color: #7367f0;
+}
+.ratingComment{
+    background: #eee;
+    padding: 6px;
+    font-size: 11px;
+    line-height: 3;
+    border-radius: 4px;
+    text-align: center;
+}
+.fa-browser-container {
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    padding: 1rem;
+    background: rgba(0,0,0,0.5);
+    z-index: 9;
+}
+.fa-browser-container > .window {
+    display: flex;
+    padding: 1rem;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+    position: relative;
+    max-width: 800px;
+    width: 100%;
+    height: 60vh;
+    background: white;
+    z-index: 1;
+    overflow: auto;
+}
+.fa-browser-container > .close {
+    font-size: 36px;
+    color: white;
+    position: absolute;
+    top: 15%;
+    right: 27%;
+    z-index: 2;
+    cursor: pointer;
+    text-shadow: 0 0 10px black;
+}
+.formCustom{box-shadow: 0 4px 24px 0 rgb(34 41 47 / 10%);max-width: 400px;width: 100%;padding: 30px 15px;border-radius: 7px;background-color: white;position: relative;z-index: initial}
+.boxLoginCustom{
+    background-color: #f8f8f8 !important;
+}
+.tox-notification--warning{
+    display: none !important;
+}
+.text-bold{
+    font-weight: bold !important;
+}

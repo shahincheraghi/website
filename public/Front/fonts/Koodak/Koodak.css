@@ -1,0 +1,6 @@
+@font-face {
+    font-family: "FontCustom";
+    font-style: normal;
+    font-weight: normal;
+    src: url("BKoodakBold.woff") format("woff"), url("BKoodakBold.ttf") format("truetype");
+}

@@ -1,0 +1,1 @@
+[25-Feb-2023 19:42:42 UTC] PHP Fatal error:  Trait "Pishran\LaravelPersianSlug\HasPersianSlug" not found in /home/mediagco/mediagco.com/app/Models/Page.php on line 11

@@ -1,0 +1,6 @@
+@font-face {
+    font-family: "FontCustom";
+    font-style: normal;
+    font-weight: normal;
+    src: url("PalatinoRegular.woff") format("woff"), url("PalatinoRegular.ttf") format("truetype");
+}

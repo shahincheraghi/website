@@ -1,0 +1,21 @@
+@font-face {
+    font-family: FontCustom;
+    font-style: normal;
+    font-weight: normal;
+    src: url('eot/Anjoman-Light.eot?#') format('eot'), /* IE6ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã…â€œ8 */ url('woff/Anjoman-Light.woff') format('woff'), /* FF3.6+, IE9, Chrome6+, Saf5.1+*/ url('woff2/Anjoman-Light.woff2') format('woff2'), /* FF39+,Chrome36+, Opera24+*/ url('ttf/Anjoman-Light.ttf') format('truetype');  /* Saf3ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â5, Chrome4+, FF3.5, Opera 10+ */
+}
+
+@font-face {
+    font-family: FontCustom;
+    font-style: normal;
+    font-weight: 600;
+    src: url('eot/Anjoman-Regular.eot?#') format('eot'), /* IE6ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã…â€œ8 */ url('woff/Anjoman-Regular.woff') format('woff'), /* FF3.6+, IE9, Chrome6+, Saf5.1+*/ url('woff2/Anjoman-Regular.woff2') format('woff2'), /* FF39+,Chrome36+, Opera24+*/ url('ttf/Anjoman-Regular.ttf') format('truetype');  /* Saf3ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â5, Chrome4+, FF3.5, Opera 10+ */
+}
+
+@font-face {
+    font-family: FontCustom;
+    font-style: normal;
+
+    font-weight: bold;
+    src: url('eot/Anjoman-Bold.eot?#') format('eot'), /* IE6ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã…â€œ8 */ url('woff/Anjoman-Bold.woff') format('woff'), /* FF3.6+, IE9, Chrome6+, Saf5.1+*/ url('woff2/Anjoman-Bold.woff2') format('woff2'), /* FF39+,Chrome36+, Opera24+*/ url('ttf/Anjoman-Bold.ttf') format('truetype');  /* Saf3ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â5, Chrome4+, FF3.5, Opera 10+ */
+}

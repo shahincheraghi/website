@@ -1,0 +1,43 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="HtmlUnknownAttribute" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="myValues">
+        <value>
+          <list size="3">
+            <item index="0" class="java.lang.String" itemvalue="option" />
+            <item index="1" class="java.lang.String" itemvalue="admin.menus.destroy" />
+            <item index="2" class="java.lang.String" itemvalue="{{}}" />
+          </list>
+        </value>
+      </option>
+      <option name="myCustomValuesEnabled" value="true" />
+    </inspection_tool>
+    <inspection_tool class="HtmlUnknownTag" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="myValues">
+        <value>
+          <list size="17">
+            <item index="0" class="java.lang.String" itemvalue="nobr" />
+            <item index="1" class="java.lang.String" itemvalue="noembed" />
+            <item index="2" class="java.lang.String" itemvalue="comment" />
+            <item index="3" class="java.lang.String" itemvalue="noscript" />
+            <item index="4" class="java.lang.String" itemvalue="embed" />
+            <item index="5" class="java.lang.String" itemvalue="script" />
+            <item index="6" class="java.lang.String" itemvalue="videos" />
+            <item index="7" class="java.lang.String" itemvalue="style" />
+            <item index="8" class="java.lang.String" itemvalue="margin-right" />
+            <item index="9" class="java.lang.String" itemvalue="slider_wrapper_custom" />
+            <item index="10" class="java.lang.String" itemvalue="mainsliderhomepage" />
+            <item index="11" class="java.lang.String" itemvalue="textboxsliderhompage" />
+            <item index="12" class="java.lang.String" itemvalue="fontsize-50" />
+            <item index="13" class="java.lang.String" itemvalue="max-height-200" />
+            <item index="14" class="java.lang.String" itemvalue="div" />
+            <item index="15" class="java.lang.String" itemvalue="acript" />
+            <item index="16" class="java.lang.String" itemvalue="href" />
+          </list>
+        </value>
+      </option>
+      <option name="myCustomValuesEnabled" value="true" />
+    </inspection_tool>
+  </profile>
+</component>
