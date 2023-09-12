@@ -72,3 +72,19 @@ font-family: IRANSans, sans-serif !important;
 .text-bold{
     font-weight: bold !important;
 }
+.modal .modal-header{
+    background-color: #007bff !important;
+    border-radius: 5px 5px 0px 0px;
+}
+.modal-title{
+    color: white !important;
+}
+.modal .modal-content{
+    border-radius: 5px !important;
+}
+.modal .modal-header .close{
+    background-color: transparent !important;
+}
+.modal .modal-header .close span{
+    color: white !important;
+}

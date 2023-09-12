@@ -9,12 +9,6 @@ Route::get('key',function (){
     dd("Cache is cleared");
 });
 
-
-
-
-
-
-
 Route::get('install/pre-installation', 'InstallController@preInstallation')->name('install.pre_installation');
 Route::get('install/configuration', 'InstallController@getConfiguration')->name('install.configuration.show');
 Route::post('install/configuration', 'InstallController@postConfiguration')->name('install.configuration.post');
@@ -67,6 +61,9 @@ Route::post('saveFormDynamic', 'Admin\FormController@save')->name('Admin.forms.s
 
 
 Route::get('/list', 'Controller@getAgencylist')->name('agency.list');
+
+
+
     Route::namespace('Auth')->prefix('Auth')->group(function () {
         Route::get('/adminLogin', 'AuthController@login')->name('Admin.Auth.login');
         Route::post('/adminDoLogin', 'AuthController@doLogin')->name('Admin.Auth.doLogin');
@@ -479,6 +476,17 @@ Route::get('/list', 'Controller@getAgencylist')->name('agency.list');
                 Route::post('/update', 'ProblemEventController@update')->name('Admin.ProblemEventController.update');
                 Route::get('/delete/{id}', 'ProblemEventController@destroy')->name('Admin.ProblemEventController.destroy');
             });
+
+
+            Route::prefix('Representative')->group(function () {
+                Route::get('/list', 'RepresentativeController@index')->name('Admin.RepresentativeController.index');
+                Route::get('/create', 'RepresentativeController@create')->name('Admin.RepresentativeController.create');
+                Route::post('/store', 'RepresentativeController@store')->name('Admin.RepresentativeController.store');
+                Route::post('/edit', 'RepresentativeController@show')->name('Admin.RepresentativeController.show');
+                Route::post('/update', 'RepresentativeController@update')->name('Admin.RepresentativeController.update');
+                Route::get('/delete/{id}', 'RepresentativeController@destroy')->name('Admin.RepresentativeController.destroy');
+            });
+
 
             Route::prefix('menus')->group(function () {
                 Route::get('/', 'MenuController@index')->name('Admin.menus.index');

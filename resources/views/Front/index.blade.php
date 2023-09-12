@@ -52,8 +52,11 @@
                 <div class="row justify-content-center">
 
                     @if(isset($data['TabBox'][0]))
+
                         @if($sections->type != '99' and $sections->type != $data['TabBox'][0]->type)
+
                             @if(isset($sections->title) || isset($sections->topTitle) || isset($sections->description))
+
                                 <div class="col-12 text-center">
                                     <div class="section-title mb-2 pb-2">
                                         @if(isset($sections->title))
@@ -67,8 +70,11 @@
                                         @endif
                                     </div>
                                 </div><!--end col-->
+
                             @endif
+
                         @endif
+
                     @endif
 
                     <div class="row"></div>

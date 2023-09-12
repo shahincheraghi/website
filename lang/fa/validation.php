@@ -310,6 +310,6 @@ return array(
         'Imei' => 'سریال دستگاه',
         'province_id' => 'استان',
         'mobileCheckOtpActivationHamta' => 'شماره موبایل',
-        'activationHamtaOtpCode' => 'کد یکبار مصرف',
+
     ),
 );

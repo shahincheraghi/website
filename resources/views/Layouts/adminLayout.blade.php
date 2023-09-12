@@ -554,6 +554,16 @@
                         </li>
                     @endif
 
+                    @if(Auth::user()->type==0 or in_array('Admin.RepresentativeController.index',$arrayPerm))
+                        <li>
+                            <a href="{{route('Admin.RepresentativeController.index')}}">
+                                <i class="feather icon-circle"></i>
+                                <span class="menu-item"
+                                      data-i18n="{{trans('langPanel.RepresentativeList')}}">{{trans('langPanel.RepresentativeList')}}</span>
+                            </a>
+                        </li>
+                    @endif
+
                 </ul>
             </li>
 
@@ -724,7 +734,6 @@
                         </li>
                     @endif
                     @if(Auth::user()->type==0 or in_array('Admin.settings.show',$arrayPerm))
-
                         <li class=" nav-item">
                             <a href="{{route('Admin.settings.show')}}">
                                 <i class="feather icon-settings"></i>

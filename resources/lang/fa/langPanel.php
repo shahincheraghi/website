@@ -40,6 +40,15 @@ return [
     'listTabBox' => ' لیست قاب متنی در تب',
 
 
+    'Representative' => 'نمایده ها',
+    'RepresentativeInsert' => ' درج نمایده',
+    'insertRepresentative' => ' درج نمایده',
+    'RepresentativeEdit' => 'ویرایش نمایده',
+    'RepresentativeList' => ' لیست نمایده ها',
+    'listRepresentative' => ' لیست نمایده ها',
+    'editRepresentative' => ' ویرایش نمایده',
+
+
     'QuestionAnswer' => 'پرسش و پاسخ',
     'QuestionAnswerInsert' => ' درج پرسش و پاسخ',
     'insertQuestionAnswer' => ' درج پرسش و پاسخ',
@@ -731,4 +740,8 @@ return [
     "descriptionSeoPage"=>'توضیحات صفحه',
     "formBuilder"=>'فرم ساز',
     "CustomFont"=>'انتخاب فونت',
+    "filter"=>'فیلتر نقشه',
+    "agency"=>'نام نماینده',
+    "timeWork"=>'ساعت کاری',
+    "action"=>'عملیات',
 ];
