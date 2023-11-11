@@ -121,20 +121,22 @@ class RepresentativeController extends Controller
     }
 //    =====================destroyFormModel=======================
 
-//    public function getAgencylist(Request $request){
-//
-//
-//        if ($request->ajax()) {
-//            return Datatables::of($collection2)
-//                ->addIndexColumn()
-//                ->filter(function ($instance) use ($request) {
-//                    if (!empty($request->get('nameProvince'))) {
-//                        $instance->collection = $instance->collection->filter(function ($row) use ($request) {
-//                            return Str::contains($row['filter'], $request->get('nameProvince')) ? true : false;
-//                        });
-//                    }
-//                })
-//                ->make(true);
-//        }
-//    }
+
+//    ===================== getAgencyList for website =======================
+    public function getAgencyList(Request $request){
+        $Representatives= Representative::all();
+        if ($request->ajax()) {
+            return Datatables::of($Representatives)
+                ->addIndexColumn()
+                ->filter(function ($instance) use ($request) {
+                    if (!empty($request->get('nameProvince'))) {
+                        $instance->collection = $instance->collection->filter(function ($row) use ($request) {
+                            return Str::contains($row['filter'], $request->get('nameProvince')) ? true : false;
+                        });
+                    }
+                })
+                ->make(true);
+        }
+    }
+//    ===================== getAgencyList for website =======================
 }

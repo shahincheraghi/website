@@ -412,9 +412,9 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="phone">{{trans('langPanel.phone')}}</label>
-                                    <input type="text" class="form-control" id="phone" name="phone"
-                                           placeholder="شماره موبایل را وارد کنید">
-                                    <span class="invalid-feedback" role="alert" id="phoneError"></span>
+                                    <input type="text" class="form-control" id="phoneUpdate" name="phone"
+                                           placeholder="شماره تلفن را وارد کنید">
+                                    <span class="invalid-feedback" role="alert" id="phoneUpdateError"></span>
                                 </div>
                             </div>
 
@@ -485,6 +485,7 @@
                     $("#cityUpdate").val(response.data.city);
                     $("#timeWorkUpdate").val(response.data.timeWork);
                     $("#addressUpdate").val(response.data.address);
+                    $("#phoneUpdate").val(response.data.phone);
                     $('#statusUpdate').val(response.data.status).change();
                     $('#RepresentativeModalIUpdate').modal('show');
                 },
@@ -622,6 +623,10 @@
                         if (errors.timeWork) {
                             $("#timeWorkUpdate").addClass("is-invalid");
                             $("#timeWorkUpdateError").text(errors.timeWork[0]);
+                        }
+                        if (errors.phone) {
+                            $("#phoneUpdate").addClass("is-invalid");
+                            $("#phoneUpdateError").text(errors.phone[0]);
                         }
                         if (errors.address) {
                             $("#addressUpdate").addClass("is-invalid");

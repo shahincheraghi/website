@@ -3,6 +3,7 @@
     <link rel="stylesheet" href="./Front/css/swiper.min.css">
 @endsection
 @section('content')
+
     @if(count($data['sliders']) >= 1)
         <section class="home-slider position-relative">
             <div id="carouselExampleInterval" class="carousel slide carousel-fade" data-bs-ride="carousel">
@@ -44,41 +45,37 @@
         </section>
     @endif
     @if(isset($data['homeItems']))
-
-          @foreach($data['homeItems'] as $sections)
+        @foreach($data['homeItems'] as $sections)
 
             <div class="container  mt-4">
                 <!--start row-->
                 <div class="row justify-content-center">
+                    @if($sections->type != '99')
+                        @if($sections->type != '96')
+                            @if($sections->type != '1')
+                                @if(isset($sections->title) || isset($sections->topTitle) || isset($sections->description))
+                                    <div class="col-12 text-center">
+                                        <div class="section-title mb-2 pb-2">
 
-                    @if(isset($data['TabBox'][0]))
+                                            @if(isset($sections->title))
+                                                <h6 class="text-primary">{{ $sections->title }}</h6>
+                                            @endif
 
-                        @if($sections->type != '99' and $sections->type != $data['TabBox'][0]->type)
+                                            @if(isset($sections->topTitle))
+                                                <h4 class="title mb-4">{{$sections->topTitle }}</h4>
+                                            @endif
 
-                            @if(isset($sections->title) || isset($sections->topTitle) || isset($sections->description))
+                                            @if(isset($sections->description))
+                                                <p class="text-muted para-desc mx-auto">{{ $sections->description }}</p>
+                                            @endif
 
-                                <div class="col-12 text-center">
-                                    <div class="section-title mb-2 pb-2">
-                                        @if(isset($sections->title))
-                                            <h6 class="text-primary">{{ $sections->title }}</h6>
-                                        @endif
-                                        @if(isset($sections->topTitle))
-                                            <h4 class="title mb-4">{{$sections->topTitle }}</h4>
-                                        @endif
-                                        @if(isset($sections->description))
-                                            <p class="text-muted para-desc mx-auto">{{ $sections->description }}</p>
-                                        @endif
-                                    </div>
-                                </div><!--end col-->
-
+                                        </div>
+                                    </div><!--end col-->
+                                @endif
                             @endif
-
                         @endif
-
                     @endif
-
                     <div class="row"></div>
-
                 </div>
                 <!--end row-->
                 <!--start row-->
@@ -122,7 +119,7 @@
                                                                 class="avatar avatar-small" alt="">
                                                         </div>
                                                         <div class="content mt-4">
-                                                            <h5 class="text-primary"> {!! $box2->title !!}   </h5>
+                                                            <h5 class="text-primary"> {!! $box2->title !!}</h5>
                                                             <p class="text-muted text-justify px-2">
                                                                 {!! $box2->description !!}
                                                             </p>
@@ -152,9 +149,9 @@
                                                 <div class="col-lg-3 col-md-4 mt-4 pt-2">
                                                     <a
                                                         @if($QuickAccess->link == null)
-                                                        href="javascript:void(0)"
+                                                            href="javascript:void(0)"
                                                         @else
-                                                        href="{{$QuickAccess->link}}"
+                                                            href="{{$QuickAccess->link}}"
                                                         @endif
                                                         class="shahin">
                                                         <div
@@ -180,119 +177,117 @@
                         @endif
                     @endif
 
-
                     @if(isset($data['HomeBox4'][0]))
-                            @if($sections->type == $data['HomeBox4'][0]->type)
-                                <div class="dirLtr customer-logos">
+                        @if($sections->type == $data['HomeBox4'][0]->type)
+                            <div class="dirLtr customer-logos">
+                                @foreach($sections->manageHomeContentItem as $itemsInSection)
+                                    @foreach($data['HomeBox4'] as $box4)
+                                        @if($box4->id === $itemsInSection->homeContentId)
+                                            <a href="{!! $box4->link !!}" target="_blank">
+                                                <div class="slide d-flex justify-content-center text-center ">
+                                                    <img style="height: 75px !important;" class="imgCusomslider"
+                                                         src="/File/HomeContent/{!! $box4->path !!}">
+                                                </div>
+                                            </a>
+                                        @else
+                                            @continue
+                                        @endif
+                                    @endforeach
+                                @endforeach
+                            </div>
+                        @endif
+                    @endif
+
+                    @if(isset($data['HomeBox3'][0]))
+                        @if($sections->type == $data['HomeBox3'][0]->type)
+                            <div class="container my-2">
+                                <div class="row align-items-center">
                                     @foreach($sections->manageHomeContentItem as $itemsInSection)
-                                        @foreach($data['HomeBox4'] as $box4)
-                                            @if($box4->id === $itemsInSection->homeContentId)
-                                                <a href="{!! $box4->link !!}" target="_blank">
-                                                    <div class="slide d-flex justify-content-center text-center ">
-                                                        <img style="height: 75px !important;" class="imgCusomslider"
-                                                             src="/File/HomeContent/{!! $box4->path !!}">
+                                        @foreach($data['HomeBox3'] as $box3)
+                                            @if($box3->id === $itemsInSection->homeContentId)
+                                                <div class="row ">
+                                                    <div
+                                                        class="col-lg-5 order-2 @if($box3->order == 'right') order-lg-2 @else order-lg-1 @endif mt-4 pt-2 mt-lg-0 pt-lg-0">
+                                                        <div class="section-title me-lg-4">
+                                                            <h1 class="title text-primary mb-3">{!! $box3->title !!}</h1>
+                                                            <p class="para-desc text-muted text-justify">{!! $box3->description !!}</p>
+                                                            @if(isset($box3->link))
+                                                                <div class="row">
+                                                                    <div class="col-12 pt-4">
+                                                                        <a href="{!! $box3->link !!}"
+                                                                           class="mt-3 h6 text-primary">اطلاعات بیشتر <i
+                                                                                class="uil uil-angle-left-b align-middle"></i></a>
+                                                                    </div><!--end col-->
+                                                                </div>
+                                                            @endif
+                                                        </div>
+                                                    </div><!--end col-->
+                                                    <div
+                                                        class="col-lg-7 order-1 @if($box3->order == 'right')order-lg-1 @else order-lg-2 @endif ">
+                                                        <div class="">
+                                                            <img style="height: 400px;width: auto"
+                                                                 src="File/HomeContent/{!! $box3->path !!}"
+                                                                 class="img-fluid mx-auto d-block rounded " alt="">
+                                                        </div>
+                                                    </div><!--end col-->
+                                                </div>
+                                            @endif
+                                        @endForeach
+                                    @endforeach
+                                </div><!--end row-->
+                            </div>
+                        @endif
+                    @endif
+
+                    @if($sections->type == '97')
+                        <div class="container mt-5 mb-2">
+                            <div class="row mt-4 pt-2 position-relative" id="counter" style="z-index: 1;">
+                                @foreach($data['counters'] as $item)
+                                    <div class="col-md-3 col-6 mt-4 pt-2">
+                                        <div class="counter-box text-center">
+                                            <img src="{{$item->image}}" class="avatar avatar-small" alt="">
+                                            <h2 class="mb-0 mt-4"><span class="counter-value"
+                                                                        data-target="{{$item->title}}">{{$item->title}}</span>
+                                            </h2>
+                                            <h6 class="counter-head text-muted">{{$item->subTitle}} </h6>
+                                        </div><!--end counter box-->
+                                    </div>
+                                @endforeach
+                            </div>
+                            <div class="feature-posts-placeholder"></div>
+                        </div>
+                    @endif
+
+                    @if(isset($data['BusinessProcess'][0]))
+                        @if($sections->type == $data['BusinessProcess'][0]->type)
+                            <div class="container mt-5 mb-2">
+                                <div class="row">
+                                    @foreach($sections->manageHomeContentItem as $itemsInSection)
+                                        @foreach($data['BusinessProcess'] as $item)
+                                            @if($item->id === $itemsInSection->homeContentId)
+                                                <div class="col-md-4 mt-4 pt-2">
+                                                    <div class="card features feature-clean
+                 @if (!$loop->last) work-process @endif bg-transparent process-arrow border-0 text-center">
+                                                        <div class="icons text-primary text-center mx-auto">
+                                                            <i class="{!! $item->icon !!} d-block rounded h3 mb-0"></i>
+                                                        </div>
+                                                        <div class="card-body">
+                                                            <h5 class="text-dark">{!! $item->title !!} </h5>
+                                                            <p class="text-muted mb-0">{!! $item->description !!}</p>
+                                                        </div>
                                                     </div>
-                                                </a>
-                                            @else
-                                                @continue
+                                                </div>
                                             @endif
                                         @endforeach
                                     @endforeach
                                 </div>
-                            @endif
-                        @endif
-
-                    @if(isset($data['HomeBox3'][0]))
-                            @if($sections->type == $data['HomeBox3'][0]->type)
-                                <div class="container my-2">
-                                    <div class="row align-items-center">
-                                        @foreach($sections->manageHomeContentItem as $itemsInSection)
-                                            @foreach($data['HomeBox3'] as $box3)
-                                                @if($box3->id === $itemsInSection->homeContentId)
-                                                    <div class="row ">
-                                                        <div
-                                                            class="col-lg-5 order-2 @if($box3->order == 'right') order-lg-2 @else order-lg-1 @endif mt-4 pt-2 mt-lg-0 pt-lg-0">
-                                                            <div class="section-title me-lg-4">
-                                                                <h1 class="title text-primary mb-3">{!! $box3->title !!}</h1>
-                                                                <p class="para-desc text-muted text-justify">{!! $box3->description !!}</p>
-                                                                @if(isset($box3->link))
-                                                                    <div class="row">
-                                                                        <div class="col-12 pt-4">
-                                                                            <a href="{!! $box3->link !!}"
-                                                                               class="mt-3 h6 text-primary">اطلاعات بیشتر <i
-                                                                                    class="uil uil-angle-left-b align-middle"></i></a>
-                                                                        </div><!--end col-->
-                                                                    </div>
-                                                                @endif
-                                                            </div>
-                                                        </div><!--end col-->
-                                                        <div
-                                                            class="col-lg-7 order-1 @if($box3->order == 'right')order-lg-1 @else order-lg-2 @endif ">
-                                                            <div class="">
-                                                                <img style="height: 400px;width: auto"
-                                                                     src="File/HomeContent/{!! $box3->path !!}"
-                                                                     class="img-fluid mx-auto d-block rounded " alt="">
-                                                            </div>
-                                                        </div><!--end col-->
-                                                    </div>
-                                                @endif
-                                            @endForeach
-                                        @endforeach
-                                    </div><!--end row-->
-                                </div>
-                            @endif
-                        @endif
-
-                    @if($sections->type == '97')
-                            <div class="container mt-5 mb-2">
-                                <div class="row mt-4 pt-2 position-relative" id="counter" style="z-index: 1;">
-                                    @foreach($data['counters'] as $item)
-                                        <div class="col-md-3 col-6 mt-4 pt-2">
-                                            <div class="counter-box text-center">
-                                                <img src="{{$item->image}}" class="avatar avatar-small" alt="">
-                                                <h2 class="mb-0 mt-4"><span class="counter-value"
-                                                                            data-target="{{$item->title}}">{{$item->title}}</span>
-                                                </h2>
-                                                <h6 class="counter-head text-muted">{{$item->subTitle}} </h6>
-                                            </div><!--end counter box-->
-                                        </div>
-                                    @endforeach
-                                </div>
-                                <div class="feature-posts-placeholder"></div>
                             </div>
                         @endif
-
-                    @if(isset($data['BusinessProcess'][0]))
-                            @if($sections->type == $data['BusinessProcess'][0]->type)
-                                <div class="container mt-5 mb-2">
-                                    <div class="row">
-                                        @foreach($sections->manageHomeContentItem as $itemsInSection)
-                                            @foreach($data['BusinessProcess'] as $item)
-                                                @if($item->id === $itemsInSection->homeContentId)
-                                                    <div class="col-md-4 mt-4 pt-2">
-                                                        <div class="card features feature-clean
-                 @if (!$loop->last) work-process @endif bg-transparent process-arrow border-0 text-center">
-                                                            <div class="icons text-primary text-center mx-auto">
-                                                                <i class="{!! $item->icon !!} d-block rounded h3 mb-0"></i>
-                                                            </div>
-                                                            <div class="card-body">
-                                                                <h5 class="text-dark">{!! $item->title !!} </h5>
-                                                                <p class="text-muted mb-0">{!! $item->description !!}</p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                @endif
-                                            @endforeach
-                                        @endforeach
-                                    </div>
-                                </div>
-                            @endif
-                        @endif
+                    @endif
 
                 </div>
                 <!--end row-->
             </div>
-
             @if($sections->type == '96')
                 @if(isset($data['rowData']['faq']) & count($data['faqs']) >=1)
                     <section class=" bg-light pt-5">
@@ -348,7 +343,6 @@
                     </section>
                 @endif
             @endif
-
             @if($sections->type == '99')
                 <section class="py-5 bg-light">
                     <div class="container">
@@ -429,7 +423,6 @@
                 </section>
 
             @endif
-
             @if(isset($data['BigPicInLapTop'][0]))
                 @if($sections->type == $data['BigPicInLapTop'][0]->type)
                     @foreach($sections->manageHomeContentItem as $itemsInSection)
@@ -453,7 +446,6 @@
                     @endforeach
                 @endif
             @endif
-
             @if(isset($data['TextWithBackground'][0]))
                 @if($sections->type == $data['TextWithBackground'][0]->type)
                     @foreach($sections->manageHomeContentItem as $itemsInSection)
@@ -485,7 +477,6 @@
                     @endforeach
                 @endif
             @endif
-
             @if(isset($data['TabBox'][0]))
                 @if($sections->type == $data['TabBox'][0]->type)
 
@@ -540,7 +531,6 @@
                     </section>
                 @endif
             @endif
-
             @if(isset($data['QuestionAnswer'][0]))
                 @if($sections->type == $data['QuestionAnswer'][0]->type)
                     <div class="container mt-2 mt-60">
@@ -583,7 +573,6 @@
 
                 @endif
             @endif
-
             @if(isset($data['SliderMiniImg'][0]))
                 @if($sections->type == $data['SliderMiniImg'][0]->type)
                     <div class="container-fluid">
@@ -592,65 +581,82 @@
                                 <div class="tns-outer" id="tns2-ow">
                                     <div id="tns2-mw" class="tns-ovh">
                                         <div class="tns-inner" id="tns2-iw">
-                                            <div class="tiny-six-item  tns-slider tns-carousel tns-subpixel tns-calc tns-horizontal" id="tns2" style="transform: translate3d(0%, 0px, 0px);">
-                                            @foreach($sections->manageHomeContentItem as $itemsInSection)
-                                                @foreach($data['SliderMiniImg'] as $SliderMiniImg)
-                                                    @if($SliderMiniImg->id === $itemsInSection->homeContentId)
-                                                <div class="tiny-slide tns-item tns-slide-active" id="tns2-item0">
-                                                                <div class="popular-tour rounded-md position-relative overflow-hidden mx-2">
-                                                                    <img src="File/homeContent/{{$SliderMiniImg->path}}" class="img-fluid" alt="">
+                                            <div
+                                                class="tiny-six-item  tns-slider tns-carousel tns-subpixel tns-calc tns-horizontal"
+                                                id="tns2" style="transform: translate3d(0%, 0px, 0px);">
+                                                @foreach($sections->manageHomeContentItem as $itemsInSection)
+                                                    @foreach($data['SliderMiniImg'] as $SliderMiniImg)
+                                                        @if($SliderMiniImg->id === $itemsInSection->homeContentId)
+                                                            <div class="tiny-slide tns-item tns-slide-active"
+                                                                 id="tns2-item0">
+                                                                <div
+                                                                    class="popular-tour rounded-md position-relative overflow-hidden mx-2">
+                                                                    <img src="File/homeContent/{{$SliderMiniImg->path}}"
+                                                                         class="img-fluid" alt="">
                                                                     <div class="overlay-work bg-dark"></div>
                                                                     <div class="content">
-                                                                        <a href="javascript:void(0)" class="title text-white h4 title-dark">{{$SliderMiniImg->title}} </a>
+                                                                        <a href="javascript:void(0)"
+                                                                           class="title text-white h4 title-dark">{{$SliderMiniImg->title}} </a>
                                                                     </div>
                                                                 </div><!--end tour post-->
-                                                </div>
-                                    @endif
-                                @endforeach
-                            @endforeach
-                              </div>
+                                                            </div>
+                                                        @endif
+                                                    @endforeach
+                                                @endforeach
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="tns-nav" aria-label="Carousel Pagination">
-                                        <button type="button" data-nav="0" aria-controls="tns2" style="" aria-label="Carousel Page 1 (Current Slide)" class="tns-nav-active"></button>
-                                        <button type="button" data-nav="1" aria-controls="tns2" style="" aria-label="Carousel Page 2" class="" tabindex="-1"></button>
-                                        <button type="button" data-nav="2" tabindex="-1" aria-controls="tns2" style="display: none;" aria-label="Carousel Page 3"></button>
-                                        <button type="button" data-nav="3" tabindex="-1" aria-controls="tns2" style="display: none;" aria-label="Carousel Page 4"></button>
-                                        <button type="button" data-nav="4" tabindex="-1" aria-controls="tns2" style="display: none;" aria-label="Carousel Page 5"></button>
-                                        <button type="button" data-nav="5" tabindex="-1" aria-controls="tns2" style="display: none;" aria-label="Carousel Page 6"></button>
-                                        <button type="button" data-nav="6" tabindex="-1" aria-controls="tns2" style="display: none;" aria-label="Carousel Page 7"></button>
-                                        </div>
+                                        <button type="button" data-nav="0" aria-controls="tns2" style=""
+                                                aria-label="Carousel Page 1 (Current Slide)"
+                                                class="tns-nav-active"></button>
+                                        <button type="button" data-nav="1" aria-controls="tns2" style=""
+                                                aria-label="Carousel Page 2" class="" tabindex="-1"></button>
+                                        <button type="button" data-nav="2" tabindex="-1" aria-controls="tns2"
+                                                style="display: none;" aria-label="Carousel Page 3"></button>
+                                        <button type="button" data-nav="3" tabindex="-1" aria-controls="tns2"
+                                                style="display: none;" aria-label="Carousel Page 4"></button>
+                                        <button type="button" data-nav="4" tabindex="-1" aria-controls="tns2"
+                                                style="display: none;" aria-label="Carousel Page 5"></button>
+                                        <button type="button" data-nav="5" tabindex="-1" aria-controls="tns2"
+                                                style="display: none;" aria-label="Carousel Page 6"></button>
+                                        <button type="button" data-nav="6" tabindex="-1" aria-controls="tns2"
+                                                style="display: none;" aria-label="Carousel Page 7"></button>
                                     </div>
+                                </div>
                             </div><!--end col-->
                         </div><!--end row-->
                     </div>
 
                 @endif
             @endif
-
             @if(isset($data['CustomersComment'][0]))
                 @if($sections->type == $data['CustomersComment'][0]->type)
                     <div class="container">
                         <div class="row">
                             <div class="col-12 mt-4">
                                 <div class="tns-outer" id="tns1-ow">
-                                    <div class="tns-liveregion tns-visually-hidden" aria-live="polite" aria-atomic="true">
+                                    <div class="tns-liveregion tns-visually-hidden" aria-live="polite"
+                                         aria-atomic="true">
                                         slide <span class="current">2 to 4</span> of 6
                                     </div>
                                     <div id="tns1-mw" class="tns-ovh">
                                         <div class="tns-inner" id="tns1-iw">
-                                            <div class="tiny-three-item tns-slider tns-carousel tns-subpixel tns-calc tns-horizontal"
-                                                 id="tns1" style="transform: translate3d(-16.6667%, 0px, 0px);">
+                                            <div
+                                                class="tiny-three-item tns-slider tns-carousel tns-subpixel tns-calc tns-horizontal"
+                                                id="tns1" style="transform: translate3d(-16.6667%, 0px, 0px);">
 
                                                 @foreach($data['CustomersComment'] as $item)
                                                     @foreach($sections->manageHomeContentItem as $itemsInSection)
                                                         @if($item->id === $itemsInSection->homeContentId)
-                                                            <div class="tiny-slide text-center tns-item" style="width: 350px" id="tns1-item0"
+                                                            <div class="tiny-slide text-center tns-item"
+                                                                 style="width: 350px" id="tns1-item0"
                                                                  aria-hidden="true" tabindex="-1">
                                                                 <div class="client-testi rounded shadow m-2 p-4">
                                                                     @if(isset($item->path))
                                                                         <img src="File/HomeContent/{!! $item->path !!}"
-                                                                             class="img-fluid avatar avatar-ex-sm mx-auto" alt="">
+                                                                             class="img-fluid avatar avatar-ex-sm mx-auto"
+                                                                             alt="">
                                                                     @endif
                                                                     <p class="text-muted mt-4">{!! $item->description !!}</p>
                                                                     <h6 class="text-primary">{!! $item->title !!}</h6>
@@ -671,8 +677,6 @@
                     </div>
                 @endif
             @endif
-
-
         @endForeach
 
     @endif
@@ -681,10 +685,7 @@
     <a href="#" onclick="topFunction()" id="back-to-top" class="btn btn-icon btn-primary back-to-top">
         <i data-feather="arrow-up" class="icons"></i>
     </a>
-
-
     <!-- Back to top -->
-
 @endsection
 @section('js')
     <script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/js/swiper.js'></script>
